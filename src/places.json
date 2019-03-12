@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "name": "Pacajes",
+      "latitude": "-17.084219",
+      "longitude": "-68.369383"
+    },
+    {
+      "id": 2,
+      "name": "Chiquitos Province",
+      "latitude": "-17.665230",
+      "longitude": "-60.786504"
+    },
+    {
+      "id": 3,
+      "name": "Pichi Mahuida",
+      "latitude": "-39.217142",
+      "longitude": " -64.126631"
+    }
+]
