@@ -4,6 +4,7 @@ import BlogContainer from './BlogContainer';
 import './App.css';
 import Axios from 'axios';
 import config from './config';
+import {Row, Column, AppContainer} from './styles'
 
 class App extends Component {
   state = {
@@ -31,22 +32,23 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <div className="Blog-Container">
-          <BlogContainer
-            place={this.state.currentSelected}/>
-        </div>
-        <div className="Map-Container">
-          <MapContainer
-            entries={this.state.entries}
-            setPlace={this.setPlace}
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
-            mapElement={<div style={{ height: "100%" }} />}
-          />
-        </div>
-      </div>
+      <AppContainer>
+        <Row>
+          <Column>
+              <BlogContainer place={this.state.currentSelected}/>
+          </Column>
+          <Column>
+              <MapContainer
+                entries={this.state.entries}
+                setPlace={this.setPlace}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
+                mapElement={<div style={{ height: "100%" }} />}
+              />
+          </Column>
+        </Row>
+      </AppContainer>
     );
   }
 }
