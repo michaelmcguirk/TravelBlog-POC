@@ -32,11 +32,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="Blog-Container">
-          <BlogContainer
-            place={this.state.currentSelected}/>
+        <div className="Blog-Section">
+          <BlogContainer place={this.state.currentSelected}/>
         </div>
-        <div className="Map-Container">
+        <div className="Map-Section">
           <MapContainer
             entries={this.state.entries}
             setPlace={this.setPlace}

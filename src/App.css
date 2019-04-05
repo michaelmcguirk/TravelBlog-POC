@@ -1,43 +1,52 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
 
-.Map-Container {
-  width: 50%;
-  float: right;
+.Row::after{
+  
+  clear: both;
+  content: "";
 }
-
-.Blog-Container {
-  width: 50%;
+.Map-Section, .Blog-Section {
+  display: table-cell;
   float: left;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.Blog-Section {
+  background: #395C6B;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (min-width: 768px){
+  [class*="-Section"]{
+    width: 50%;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} 
+
+
+/* export const Row = styled.div`
+    &::after{
+        content: "";
+        clear: both;
+        display: table;
+    }
+`;
+
+export const Column = styled.div`
+    display: table-cell;
+    float: left;
+    width: 50%;
+    background: #395C6B;
+    veritcal-align:top;
+
+    @media only screen and (max-width: 768px){
+        width: 100%
+    }
+`;
+
+export const AppContainer = styled.div`
+    text-align: center;
+`; */
