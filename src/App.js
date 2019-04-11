@@ -7,7 +7,7 @@ import config from './config';
 
 class App extends Component {
   state = {
-    currentSelected: "",
+    currentSelected: {location:{}},
     entries: []
   }
 
@@ -19,7 +19,8 @@ class App extends Component {
             title: c.title,
             content: c.content,
             location: c.location,
-            id: c._id
+            id: c._id,
+            gallery: c.gallery
           }
         });
         this.setState({entries: newEntries});

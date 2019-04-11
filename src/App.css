@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+  height: 100%;
   width: 100%;
+  position: absolute;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 }
@@ -18,13 +20,15 @@
 
 .Blog-Section {
   background: #395C6B;
+  
 }
 
-/* @media only screen and (min-width: 768px){
-  [class*="-Section"]{
-    width: 50%;
-  }
-}  */
+@media only screen and (min-width: 768px){
+  .Blog-Section {
+    max-height: 100%;
+    overflow: auto;
+  } 
+}
 
 
 /* export const Row = styled.div`
