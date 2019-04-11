@@ -1,17 +1,17 @@
 .App {
   text-align: center;
   width: 100%;
-  display: flex;
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 }
 
+/*[Blog-Section] auto [Map-Section] auto;*/
+
 .Row::after{
-  
   clear: both;
   content: "";
 }
 .Map-Section, .Blog-Section {
-  display: table-cell;
   float: left;
   width: 100%;
 }
@@ -20,11 +20,11 @@
   background: #395C6B;
 }
 
-@media only screen and (min-width: 768px){
+/* @media only screen and (min-width: 768px){
   [class*="-Section"]{
     width: 50%;
   }
-} 
+}  */
 
 
 /* export const Row = styled.div`
