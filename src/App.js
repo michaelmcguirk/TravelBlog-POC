@@ -7,8 +7,19 @@ import config from './config';
 
 class App extends Component {
   state = {
-    currentSelected: {location:{}},
+    currentSelected: {location:{}, gallery: []},
     entries: []
+  }
+
+  parsePhotos = (gallery) => {
+    const images = gallery.map(g => {
+        return {
+            src: `${config.server}${g.path}`,
+            width: 16,
+            height: 9
+        }
+    });
+    return images;
   }
 
   componentDidMount = () => {
@@ -20,7 +31,7 @@ class App extends Component {
             content: c.content,
             location: c.location,
             id: c._id,
-            gallery: c.gallery
+            gallery: this.parsePhotos(c.gallery)
           }
         });
         this.setState({entries: newEntries});
