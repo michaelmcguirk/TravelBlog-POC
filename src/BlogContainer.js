@@ -39,6 +39,8 @@ class BlogContainer extends Component {
     render(){
         return(
             <div>
+                <div className="layer">
+                <div className="content">
                 <ContentComponent place={this.props.place}/>
                 <Gallery photos={this.props.place.gallery} onClick={this.openLightbox}/>
                 <Lightbox images={this.props.place.gallery}
@@ -48,6 +50,8 @@ class BlogContainer extends Component {
                     currentImage={this.state.currentImage}
                     isOpen={this.state.lightboxIsOpen}
                 />
+                </div>
+                </div>
             </div> 
         );
     }

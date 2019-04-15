@@ -1,4 +1,6 @@
-.App {
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+.app {
   text-align: center;
   height: 100%;
   width: 100%;
@@ -7,29 +9,48 @@
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 }
 
-/*[Blog-Section] auto [Map-Section] auto;*/
-
-.Row::after{
+.row::after{
   clear: both;
   content: "";
 }
-.Map-Section, .Blog-Section {
+
+.map-Section, .blog-Section {
   float: left;
   width: 100%;
 }
 
-.Blog-Section {
-  padding: 2%;
+.blog-section {
   background: #395C6B;
+  opacity: 0.9;
+  padding: 1%;
+  background-image: url("https://lh3.googleusercontent.com/S6MMVhUJgaXnjkuerxsZXipBilMXi3C_oXQrpDUEsKRNdQO5bWFk_Hxm9pN3Vukq6_crmU1_O8SUNPUxm-z2x1LmdpD59Jbgqpp89JZp3RUGsIFKL2jAooKn1Zfs-aBlnir5Rmas7wGdDGzTlATmB3j7XskY_ONuElk0kpRGLqakl5MuQPd2UHqvA5-rMPJ7GMKlCjuKyTUgTewn7a8AA1MOL3RcjRXq5cSTIio3I2AlpifG-6SReTfXAO9tQSSVGMWbasRw14zVscOhYK9SN0OQJa5xvPNSlmlPIn0ZtWYp5EfdfdbvAcmrZg9ynulyYZAn_65BeDELRw7PZ85ZCGYOQu_BaBQSyo1VaiYzWHBAReivUJsPop83cekVfKC0Tu0JSuYnpqGNwg6f1wbNu2gZCTdfU8NWZ6P4sKdKV_7vPn4YdginOtTG525qUL46Gz7QinJkSLdm8uzqUe_AoGyAjDyT8DV7Cy4lbG88rZ650vzQ-ATxZxgcWh8BHk_OuSiE6Kup89xEEzKW_uR5jzCCJHY98SwgNLLOpAycZHFapbt8k5cTfnGB3zEP7dLqil4umxYjhS81MjM3oYz9XcxYzcS-P70UT8Ml9HQ120mN-xOLKH7g4U6LRXPcWLTXQQA9rDdWEj_0Mxe6lO2v8STlLCiVGmaR0l4FJB4m80FEIenkUXkbABmLqB3DKT_RpnaidopG1VJv8JKs6D6XMYCG=w1600-h756-no");
+}
+
+.content {
+  padding: 2%;
+}
+
+.layer {
+  background: #395C6B;
+  opacity: 0.9;
+}
+
+.title {
+  color: lightgray;
+  font-family: 'Squada One', cursive;
+  text-transform: uppercase;
+  font-size: 9vw;
+  text-align: right;
+  padding-right: 5%;
+  opacity: 0.7;
 }
 
 @media only screen and (min-width: 768px){
-  .Blog-Section {
+  .blog-section {
     max-height: 100%;
     overflow: auto;
   } 
 }
-
 
 /* export const Row = styled.div`
     &::after{
