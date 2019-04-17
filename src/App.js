@@ -45,6 +45,7 @@ class App extends Component {
             content: c.content,
             location: c.location,
             id: c._id,
+            published: c.published,
             gallery: this.parsePhotos(c.gallery)
           }
         });

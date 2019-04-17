@@ -35,6 +35,20 @@
   opacity: 0.9;
 }
 
+.post-title {
+  font-size: 4vw;
+  text-decoration: overline;
+}
+
+.post-header {
+  line-height: 0.25;
+}
+
+.post-data {
+  text-decoration: underline;
+  font-style: italic;
+}
+
 .title {
   color: lightgray;
   font-family: 'Squada One', cursive;

@@ -2,10 +2,15 @@ import React from 'react';
 
 const ContentComponent = ({place}) => 
     <div>
-        <h1>{place.title}</h1>
-        <h2>{place.location.address}</h2>
+        <div className="post-header">
+            <h1 className="post-title">{place.title}</h1>
+            <p className="post-data">{place.published} | {place.location.address}</p>
+            <br></br>
+        </div>
         <div><p>{place.content}</p></div>
     </div>
+    
+    
 
 export default ContentComponent;
 
