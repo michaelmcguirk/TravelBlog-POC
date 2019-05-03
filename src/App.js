@@ -8,6 +8,19 @@ import config from './config';
 import {Route, Switch, Redirect, BrowserRouter} from 'react-router-dom';
 import About from './About';
 
+import Popup from 'reactjs-popup';
+import BurgerIcon from './BurgerMenuIcon';
+import Menu from './NavMenu';
+
+const contentStyle = {
+  background: "rgba(255,255,255,0",
+  border: "none"
+};
+
+const  overlayStyle = {
+  background: "rgba(255,255,255,0.98",
+}
+
 class App extends Component {
   state = {
     currentSelected: {location:{}, gallery: []},
@@ -64,6 +77,15 @@ class App extends Component {
       <div className="app">
         <div className="blog-section">
         <BrowserRouter>
+          <Popup
+              modal
+              overlayStyle={overlayStyle}
+              contentStyle={contentStyle}
+              closeOnDocumentClick={false}
+              trigger={open => <BurgerIcon open={open} />}
+          >
+              {close => <Menu className="menu" close={close} />}
+          </Popup>
           <Header/>
           <Switch>
             <Route exact path="/Home" render={(props) => <BlogContainer {...props} place={this.state.currentSelected}/>}/>

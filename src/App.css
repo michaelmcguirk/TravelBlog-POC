@@ -17,6 +17,8 @@
 .map-Section, .blog-Section {
   float: left;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .blog-section {
@@ -35,13 +37,13 @@
   opacity: 0.9;
 }
 
-.post-title {
-  font-size: 4vw;
-  text-decoration: overline;
+.content-header {
+  line-height: 0.25;
 }
 
-.post-header {
-  line-height: 0.25;
+.content-header h1 {
+  font-size: 4vw;
+  text-decoration: overline;
 }
 
 .post-data {
@@ -112,7 +114,51 @@
   transform: rotate(45deg) translate(-6px, -6px);
 }
 
+/* nav-menu */
+
 .popup-overlay {
   width: 50%;
+  position: relative;
+  z-index: 2;
 }
+
+.nav-menu {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 0px;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-menu ul{
+  position: relative;
+  top: 0px;
+  font-size: 24px;
+  padding: 0px;
+}
+
+.nav-menu li {
+  list-style: outside none none;
+  margin: 10px 0px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-menu a:link{
+  text-decoration: none;
+  color: black;
+}
+
+.nav-menu a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-menu a:hover {
+  text-decoration: underline;
+  color: gray;
+}
+
+
 

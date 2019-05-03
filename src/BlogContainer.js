@@ -40,17 +40,17 @@ class BlogContainer extends Component {
         return(
             <div>
                 <div className="layer">
-                <div className="content">
-                <Content place={this.props.place}/>
-                <Gallery photos={this.props.place.gallery} onClick={this.openLightbox}/>
-                <Lightbox images={this.props.place.gallery}
-                    onClose={this.closeLightbox}
-                    onClickPrev={this.gotoPrevious}
-                    onClickNext={this.gotoNext}
-                    currentImage={this.state.currentImage}
-                    isOpen={this.state.lightboxIsOpen}
-                />
-                </div>
+                    <div className="content">
+                        <Content place={this.props.place}/>
+                        <Gallery photos={this.props.place.gallery} onClick={this.openLightbox}/>
+                        <Lightbox images={this.props.place.gallery}
+                            onClose={this.closeLightbox}
+                            onClickPrev={this.gotoPrevious}
+                            onClickNext={this.gotoNext}
+                            currentImage={this.state.currentImage}
+                            isOpen={this.state.lightboxIsOpen}
+                        />
+                    </div>
                 </div>
             </div> 
         );
