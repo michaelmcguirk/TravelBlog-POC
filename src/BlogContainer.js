@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ContentComponent from './ContentComponent';
+import Content from './Content';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
 
@@ -41,7 +41,7 @@ class BlogContainer extends Component {
             <div>
                 <div className="layer">
                 <div className="content">
-                <ContentComponent place={this.props.place}/>
+                <Content place={this.props.place}/>
                 <Gallery photos={this.props.place.gallery} onClick={this.openLightbox}/>
                 <Lightbox images={this.props.place.gallery}
                     onClose={this.closeLightbox}

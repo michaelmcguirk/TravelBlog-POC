@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import BlogContainer from './BlogContainer';
+import Header from './Header';
 import './App.css';
 import Axios from 'axios';
 import config from './config';
+import {Route, Switch, Redirect, BrowserRouter} from 'react-router-dom';
+import About from './About';
 
 class App extends Component {
   state = {
@@ -60,10 +63,14 @@ class App extends Component {
     return (
       <div className="app">
         <div className="blog-section">
-          <div className="header">
-            <div className="title">Six Months</div>
-          </div>
-          <BlogContainer place={this.state.currentSelected}/>
+        <BrowserRouter>
+          <Header/>
+          <Switch>
+            <Route exact path="/Home" render={(props) => <BlogContainer {...props} place={this.state.currentSelected}/>}/>
+            <Route exact path="/About" component={About}/>
+            <Route exact path="/"><Redirect to="/Home"/></Route>
+          </Switch>
+        </BrowserRouter>
         </div>
         <div className="map-section">
           <MapContainer

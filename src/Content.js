@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContentComponent = ({place}) => 
+const Content = ({place}) => 
     <div>
         <div className="post-header">
             <h1 className="post-title">{place.title}</h1>
@@ -12,6 +12,6 @@ const ContentComponent = ({place}) =>
     
     
 
-export default ContentComponent;
+export default Content;
 
 
