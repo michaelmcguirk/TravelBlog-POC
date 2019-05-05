@@ -41,6 +41,7 @@ class App extends Component {
   }
 
   parsePhotos = (gallery) => {
+    if(gallery.length === 0) return [];
     const images = gallery.map(g => {
       let ratio = this.getAspectRatio(g.path);
         return {
@@ -75,35 +76,35 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="blog-section">
         <BrowserRouter>
-          <Popup
-              modal
-              overlayStyle={overlayStyle}
-              contentStyle={contentStyle}
-              closeOnDocumentClick={false}
-              trigger={open => <BurgerIcon open={open} />}
-          >
-              {close => <Menu className="menu" close={close} />}
-          </Popup>
-          <Header/>
-          <Switch>
-            <Route exact path="/Home" render={(props) => <BlogContainer {...props} place={this.state.currentSelected}/>}/>
-            <Route exact path="/About" component={About}/>
-            <Route exact path="/"><Redirect to="/Home"/></Route>
-          </Switch>
-        </BrowserRouter>
-        </div>
-        <div className="map-section">
-          <MapContainer
-            entries={this.state.entries}
-            setPlace={this.setPlace}
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
-            mapElement={<div style={{ height: "100%" }} />}
-          />
-        </div>
+          <div className="blog-section">
+            <Popup
+                modal
+                overlayStyle={overlayStyle}
+                contentStyle={contentStyle}
+                closeOnDocumentClick={false}
+                trigger={open => <BurgerIcon open={open} />}
+            >
+                {close => <Menu className="menu" close={close} />}
+            </Popup>
+            <Header/>
+            <Switch>
+              <Route exact path="/Home" render={(props) => <BlogContainer {...props} place={this.state.currentSelected}/>}/>
+              <Route exact path="/About" component={About}/>
+              <Route exact path="/"><Redirect to="/Home"/></Route>
+            </Switch>
+          </div>
+          <div className="map-section">
+            <MapContainer
+              entries={this.state.entries}
+              setPlace={this.setPlace}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
+              mapElement={<div style={{ height: "100%" }}/>}
+            />
+          </div>
+        </BrowserRouter>  
       </div>
     );
   }
