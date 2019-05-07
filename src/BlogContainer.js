@@ -1,59 +1,90 @@
-import React, {Component} from 'react'
-import Content from './Content';
-import Gallery from 'react-photo-gallery';
-import Lightbox from 'react-images';
+import React, { Component } from 'react';
+import MapContainer from './MapContainer';
+import BlogContentContainer from './BlogContentContainer';
+import Header from './Header';
+import Axios from 'axios';
+import config from './config';
+import {Route, Switch, Redirect} from 'react-router-dom';
+import About from './About';
 
 class BlogContainer extends Component {
-    constructor(props){
-        super(props);
-        this.state = { currentImage: 0 };
-        this.closeLightbox = this.closeLightbox.bind(this);
-        this.openLightbox = this.openLightbox.bind(this);
-        this.gotoNext = this.gotoNext.bind(this);
-        this.gotoPrevious = this.gotoPrevious.bind(this);
+    
+    state = {
+        currentSelected: {location:{}, gallery: []},
+        entries: []
     }
 
-    openLightbox(event, obj) {
-        this.setState({
-            currentImage: obj.index,
-            lightboxIsOpen: true,
+    getAspectRatio = (imagePath) => {
+        let ratio = {};
+        let ratioIndex = (imagePath.lastIndexOf(".") - 1 );
+        let ratioString = imagePath.substring(ratioIndex, ratioIndex+1);
+    
+        if(ratioString === 'p'){
+          ratio = {width: 9, height: 16};
+        }else{
+          ratio = {width: 16, height: 9};
+        }
+        return ratio;
+      }
+    
+    parsePhotos = (gallery) => {
+        if(gallery.length === 0) return [];
+        const images = gallery.map(g => {
+            let ratio = this.getAspectRatio(g.path);
+            return {
+                src: `${config.server}${g.path}`,
+                width: ratio.width,
+                height: ratio.height
+            }
         });
+        return images;
     }
-    closeLightbox() {
-        this.setState({
-            currentImage: 0,
-            lightboxIsOpen: false,
-        });
-    }
-    gotoPrevious() {
-        this.setState({
-            currentImage: this.state.currentImage - 1,
-        });
-    }
-    gotoNext() {
-        this.setState({
-            currentImage: this.state.currentImage + 1,
+
+    componentDidMount = () => {
+        Axios.get(`http://localhost/cockpit-master/api/collections/get/blogs?token=${config.cockpitToken}`)
+          .then(response => {
+            const newEntries = response.data.entries.map(c => {
+              return {
+                title: c.title,
+                content: c.content,
+                location: c.location,
+                id: c._id,
+                published: c.published,
+                gallery: this.parsePhotos(c.gallery)
+              }
+            });
+            this.setState({entries: newEntries});
         });
     }
 
+    setPlace = (place) => {
+        this.setState({currentSelected: place})
+    }
+    
     render(){
         return(
-            <div>
-                <div className="layer">
-                    <div className="content">
-                        <Content place={this.props.place}/>
-                        <Gallery photos={this.props.place.gallery} onClick={this.openLightbox}/>
-                        <Lightbox images={this.props.place.gallery}
-                            onClose={this.closeLightbox}
-                            onClickPrev={this.gotoPrevious}
-                            onClickNext={this.gotoNext}
-                            currentImage={this.state.currentImage}
-                            isOpen={this.state.lightboxIsOpen}
-                        />
-                    </div>
+            <div className="blog-container">
+                <div className="blog-section">
+                    <Header/>
+                    <Switch>
+                        <Route exact path="/Home" render={(props) => <BlogContentContainer {...props} place={this.state.currentSelected}/>}/>
+                        <Route exact path="/About" component={About}/>
+                        <Route exact path="/"><Redirect to="/Home"/></Route>
+                    </Switch>
                 </div>
-            </div> 
+                <div className="map-section">
+                    <MapContainer
+                        entries={this.state.entries}
+                        setPlace={this.setPlace}
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
+                        loadingElement={<div style={{ height: `100%` }} />}
+                        containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
+                        mapElement={<div style={{ height: "100%" }}/>}
+                    />
+                </div>
+            </div>
         );
+
     }
 }
 

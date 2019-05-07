@@ -181,6 +181,15 @@ const mapStyles = [
                 "color": "#ffffff"
             }
         ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            { 
+                "visibility": "off" 
+            }
+          ]
     }
 ];
 

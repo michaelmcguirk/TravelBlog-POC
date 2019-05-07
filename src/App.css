@@ -1,6 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Squada+One);
 
+#root{
+  width: 100%;
+  height: 100vh;
+}
+
 .app {
+  height: 100vh;
+}
+
+.blog-container {
   text-align: center;
   height: 100%;
   width: 100%;
@@ -25,7 +34,8 @@
   background: #395C6B;
   opacity: 0.9;
   padding: 1%;
-  background-image: url("https://lh3.googleusercontent.com/S6MMVhUJgaXnjkuerxsZXipBilMXi3C_oXQrpDUEsKRNdQO5bWFk_Hxm9pN3Vukq6_crmU1_O8SUNPUxm-z2x1LmdpD59Jbgqpp89JZp3RUGsIFKL2jAooKn1Zfs-aBlnir5Rmas7wGdDGzTlATmB3j7XskY_ONuElk0kpRGLqakl5MuQPd2UHqvA5-rMPJ7GMKlCjuKyTUgTewn7a8AA1MOL3RcjRXq5cSTIio3I2AlpifG-6SReTfXAO9tQSSVGMWbasRw14zVscOhYK9SN0OQJa5xvPNSlmlPIn0ZtWYp5EfdfdbvAcmrZg9ynulyYZAn_65BeDELRw7PZ85ZCGYOQu_BaBQSyo1VaiYzWHBAReivUJsPop83cekVfKC0Tu0JSuYnpqGNwg6f1wbNu2gZCTdfU8NWZ6P4sKdKV_7vPn4YdginOtTG525qUL46Gz7QinJkSLdm8uzqUe_AoGyAjDyT8DV7Cy4lbG88rZ650vzQ-ATxZxgcWh8BHk_OuSiE6Kup89xEEzKW_uR5jzCCJHY98SwgNLLOpAycZHFapbt8k5cTfnGB3zEP7dLqil4umxYjhS81MjM3oYz9XcxYzcS-P70UT8Ml9HQ120mN-xOLKH7g4U6LRXPcWLTXQQA9rDdWEj_0Mxe6lO2v8STlLCiVGmaR0l4FJB4m80FEIenkUXkbABmLqB3DKT_RpnaidopG1VJv8JKs6D6XMYCG=w1600-h756-no");
+  /*background-image: url("https://lh3.googleusercontent.com/S6MMVhUJgaXnjkuerxsZXipBilMXi3C_oXQrpDUEsKRNdQO5bWFk_Hxm9pN3Vukq6_crmU1_O8SUNPUxm-z2x1LmdpD59Jbgqpp89JZp3RUGsIFKL2jAooKn1Zfs-aBlnir5Rmas7wGdDGzTlATmB3j7XskY_ONuElk0kpRGLqakl5MuQPd2UHqvA5-rMPJ7GMKlCjuKyTUgTewn7a8AA1MOL3RcjRXq5cSTIio3I2AlpifG-6SReTfXAO9tQSSVGMWbasRw14zVscOhYK9SN0OQJa5xvPNSlmlPIn0ZtWYp5EfdfdbvAcmrZg9ynulyYZAn_65BeDELRw7PZ85ZCGYOQu_BaBQSyo1VaiYzWHBAReivUJsPop83cekVfKC0Tu0JSuYnpqGNwg6f1wbNu2gZCTdfU8NWZ6P4sKdKV_7vPn4YdginOtTG525qUL46Gz7QinJkSLdm8uzqUe_AoGyAjDyT8DV7Cy4lbG88rZ650vzQ-ATxZxgcWh8BHk_OuSiE6Kup89xEEzKW_uR5jzCCJHY98SwgNLLOpAycZHFapbt8k5cTfnGB3zEP7dLqil4umxYjhS81MjM3oYz9XcxYzcS-P70UT8Ml9HQ120mN-xOLKH7g4U6LRXPcWLTXQQA9rDdWEj_0Mxe6lO2v8STlLCiVGmaR0l4FJB4m80FEIenkUXkbABmLqB3DKT_RpnaidopG1VJv8JKs6D6XMYCG=w1600-h756-no");*/
+  background-image: url(./assets/images/welcome/welcome_1.jpg);
 }
 
 .content {
@@ -158,6 +168,57 @@
 .nav-menu a:hover {
   text-decoration: underline;
   color: gray;
+}
+
+/* Welcome Page */
+.welcome-page {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./assets/images/welcome/welcome_1.jpg);
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.welcome-text {
+  width:50%;
+  text-align: center;
+  color: #fff;
+}
+
+.welcome-button {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 24px;
+  border: 2px solid lightgray;
+  /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+  color: #fff;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+}
+
+.welcome-button:hover, .welcome-button:active {
+  background-color: #fff; /* fallback */
+  background-color: rgba(255, 255, 255, 0.4);
+  border-color: #fff; /* fallback */
+  border-color: rgba(255, 255, 255, 0.4);
+  transition: background-color 0.3s ease-in,
+              border-color 0.3s ease-in;
 }
 
 

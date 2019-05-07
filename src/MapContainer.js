@@ -37,7 +37,13 @@ class MapContainer extends Component{
             <GoogleMap 
                 defaultZoom={3} 
                 defaultCenter={{lat:-13.387047,lng:-58.460623}}
-                options={{styles: mapStyles, gestureHandling: 'none'}}>
+                options={{
+                    styles: mapStyles, 
+                    gestureHandling: 'none',
+                    zoomControl: false,
+                    mapTypeControl: false,
+                    streetViewControl: false}}
+                >
                 {this.props.entries && this.props.entries.map((entry, i) => {
                     let lat = parseFloat(entry.location.lat, 10);
                     let lng = parseFloat(entry.location.lng, 10);
