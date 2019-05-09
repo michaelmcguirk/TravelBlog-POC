@@ -1,9 +1,33 @@
 import React, {Component} from "react";
-import { withGoogleMap, GoogleMap, withScriptjs, Marker} from "react-google-maps";
+import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow} from "react-google-maps";
 import mapStyles from './MapStyles';
 import { withRouter } from 'react-router-dom';
 
 class MapContainer extends Component{
+
+    state = {
+        infoWindows: this.props.entries.map(p => {
+            return {isOpen: false}
+        }), 
+    }
+
+    markerOnMouseOver = selectedIndex => {
+        this.setState({
+            infoWindows: this.state.infoWindows.map((iw, i) => {
+                iw.isOpen = selectedIndex === i;
+                return iw;
+            })
+        });
+    }
+
+    markerOnMouseOut = selectedIndex => {
+        this.setState({
+            infoWindows: this.state.infoWindows.map((iw, i) => {
+                iw.isOpen = !selectedIndex === i;
+                return iw;
+            })
+        });
+    }
 
     checkPath(){
         if(this.props.location.pathname !== '/Home'){
@@ -32,8 +56,14 @@ class MapContainer extends Component{
                             key={entry.id}
                             name={entry.location.address}
                             position={{ lat: lat, lng: lng }}
-                            onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}>
-
+                            onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}
+                            onMouseOver={this.markerOnMouseOver.bind(this, i)}
+                            onMouseOut={this.markerOnMouseOut.bind(this,i)}>
+                                {this.state.infoWindows[i].isOpen &&
+                                    <InfoWindow>
+                                        <div>{entry.location.address}</div>
+                                    </InfoWindow>
+                                }
                         </Marker>
                     )
                 })}
