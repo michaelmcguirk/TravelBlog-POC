@@ -10,8 +10,6 @@ const Content = ({place}) =>
         <div><p>{place.content}</p></div>
     </div>
     
-    
-
 export default Content;
 
 

@@ -4,11 +4,15 @@ import mapStyles from './MapStyles';
 import { withRouter } from 'react-router-dom';
 
 class MapContainer extends Component{
+    constructor(props){
+        super(props);
 
-    state = {
-        infoWindows: this.props.entries.map(p => {
-            return {isOpen: false}
-        }), 
+        this.state = {
+            infoWindows: this.props.entries.map(p => {
+                return {isOpen: false}
+            }), 
+        }
+
     }
 
     markerOnMouseOver = selectedIndex => {
@@ -37,6 +41,7 @@ class MapContainer extends Component{
     }
 
     render(){
+        console.log(this.state.infoWindows);
         return(
             <GoogleMap 
                 defaultZoom={3} 
@@ -59,11 +64,11 @@ class MapContainer extends Component{
                             onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}
                             onMouseOver={this.markerOnMouseOver.bind(this, i)}
                             onMouseOut={this.markerOnMouseOut.bind(this,i)}>
-                                {this.state.infoWindows[i].isOpen &&
+                                {this.state.infoWindows.length != 0 ? this.state.infoWindows[i].isOpen &&
                                     <InfoWindow>
                                         <div>{entry.location.address}</div>
                                     </InfoWindow>
-                                }
+                                :null}
                         </Marker>
                     )
                 })}
