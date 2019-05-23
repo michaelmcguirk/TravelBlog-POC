@@ -6,6 +6,7 @@ import Axios from 'axios';
 import config from './config';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import About from './About';
+import MobileHeader from './MobileHeader';
 
 class BlogContainer extends Component {
     
@@ -64,6 +65,7 @@ class BlogContainer extends Component {
     render(){
         return(
             <div className="blog-container">
+                <MobileHeader/>
                 <div className="blog-section">
                     <Header/>
                     <Switch>

@@ -25,7 +25,10 @@ const Header = props => {
             >
                 {close => <Menu className="menu" close={close} />}
             </Popup> 
-            <Title/>
+            <div className="desktop-title">
+                <Title/>
+            </div>
+            
         </div>
     )
 }

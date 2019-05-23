@@ -34,6 +34,10 @@ class MapContainer extends Component{
     }
 
     checkPath(){
+        const contentElement = document.getElementById('content')
+        if(window.matchMedia("only screen and (max-width: 768px)").matches){
+            contentElement.scrollIntoView();
+        }
         if(this.props.location.pathname !== '/Home'){
             console.log("Pushing Path to /Home")
             this.props.history.push('/Home');
@@ -41,7 +45,6 @@ class MapContainer extends Component{
     }
 
     render(){
-        console.log(this.state.infoWindows);
         return(
             <GoogleMap 
                 defaultZoom={3} 
@@ -64,7 +67,7 @@ class MapContainer extends Component{
                             onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}
                             onMouseOver={this.markerOnMouseOver.bind(this, i)}
                             onMouseOut={this.markerOnMouseOut.bind(this,i)}>
-                                {this.state.infoWindows.length != 0 ? this.state.infoWindows[i].isOpen &&
+                                {this.state.infoWindows.length !== 0 ? this.state.infoWindows[i].isOpen &&
                                     <InfoWindow>
                                         <div>{entry.location.address}</div>
                                     </InfoWindow>
