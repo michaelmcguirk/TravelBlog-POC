@@ -7,6 +7,7 @@ import config from './config';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import About from './About';
 import MobileHeader from './MobileHeader';
+import BurgerMenu from './BurgerMenu';
 
 class BlogContainer extends Component {
     
@@ -33,7 +34,7 @@ class BlogContainer extends Component {
         const images = gallery.map(g => {
             let ratio = this.getAspectRatio(g.path);
             return {
-                src: `${config.server}${g.path}`,
+                src: `${process.env.REACT_APP_COCKPIT_DOMAIN}${g.path}`,
                 width: ratio.width,
                 height: ratio.height
             }
@@ -42,7 +43,7 @@ class BlogContainer extends Component {
     }
 
     componentDidMount = () => {
-        Axios.get(`http://localhost/cockpit-master/api/collections/get/blogs?token=${config.cockpitToken}`)
+        Axios.get(`${process.env.REACT_APP_COCKPIT_SERVER}/api/collections/get/${process.env.REACT_APP_COCKPIT_COLLECTION}?token=${process.env.REACT_APP_COCKPIT}`)
           .then(response => {
             const newEntries = response.data.entries.map(c => {
               return {
@@ -65,7 +66,8 @@ class BlogContainer extends Component {
     render(){
         return(
             <div className="blog-container">
-                <MobileHeader/>
+                <BurgerMenu/>
+                <MobileHeader/> 
                 <div className="blog-section">
                     <Header/>
                     <Switch>
@@ -78,7 +80,7 @@ class BlogContainer extends Component {
                     <MapContainer
                         entries={this.state.entries}
                         setPlace={this.setPlace}
-                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${config.mapsApiKey}&libraries=geometry,drawing,places`}
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP}&libraries=geometry,drawing,places`}
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={ <div style={{ height: "100vh", width: "100%" }} />}
                         mapElement={<div style={{ height: "100%" }}/>}

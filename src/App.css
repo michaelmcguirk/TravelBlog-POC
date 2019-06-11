@@ -19,6 +19,8 @@
 
 .map-section {
   grid-area: map;
+  position: relative;
+  z-index: 1998; /*1000009*/
 }
 
 .map-instruction {
@@ -30,10 +32,10 @@
   background: #395C6B;
   background-image: url(./assets/images/welcome/welcome_1.jpg);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas: 
-    "title title title"
-    ". instruction instruction"
+    "title title title title"
+    ". instruction instruction instruction"
 }
 
 .mobile-header p{
@@ -123,7 +125,7 @@
   position: fixed;
   left: 25px;
   top: 37px;
-  z-index: 9999;
+  z-index: 1999; /*10000100;*/
   background: lightgray;
   padding: 10px;
   border-radius: 25px;
@@ -139,6 +141,7 @@
   background-color: #333;
   margin: 4px 0;
   transition: 0.4s;
+  position: relative;
 }
 
 .burger-menu.open .bar1 {
@@ -157,10 +160,12 @@
 
 /* nav-menu */
 
+.burger-menu-container {
+  z-index: 2000; /*10000101;*/
+}
 .popup-overlay {
   width: 50%;
-  position: relative;
-  z-index: 2;
+  position: absolute;
 }
 
 .nav-menu {
@@ -169,7 +174,7 @@
   text-align: center;
   padding: 0px;
   position: relative;
-  z-index: 1;
+  z-index: 999;
 }
 
 .nav-menu ul{

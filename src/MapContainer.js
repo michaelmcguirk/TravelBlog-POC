@@ -39,7 +39,6 @@ class MapContainer extends Component{
             contentElement.scrollIntoView();
         }
         if(this.props.location.pathname !== '/Home'){
-            console.log("Pushing Path to /Home")
             this.props.history.push('/Home');
         }
     }
