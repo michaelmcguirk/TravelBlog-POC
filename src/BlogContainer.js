@@ -12,7 +12,10 @@ import BurgerMenu from './BurgerMenu';
 class BlogContainer extends Component {
     
     state = {
-        currentSelected: {location:{}, gallery: []},
+        currentSelected: {
+            location:{}, 
+            gallery: [], 
+            content: "Select a marker on the map to begin..."},
         entries: []
     }
 
@@ -22,9 +25,9 @@ class BlogContainer extends Component {
         let ratioString = imagePath.substring(ratioIndex, ratioIndex+1);
     
         if(ratioString === 'p'){
-          ratio = {width: 9, height: 16};
+          ratio = {width: 4, height: 5};
         }else{
-          ratio = {width: 16, height: 9};
+          ratio = {width: 5, height: 4};
         }
         return ratio;
       }
