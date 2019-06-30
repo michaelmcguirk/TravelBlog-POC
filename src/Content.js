@@ -2,7 +2,6 @@ import React from 'react';
 
 const Content = ({place}) => 
     <div id="content">
-        {console.log(place.content)}
         <div className="content-header">
             <h1 className="post-title">{place.title}</h1>
             <p className="post-data"> {getPostSubtitle(place)} </p>

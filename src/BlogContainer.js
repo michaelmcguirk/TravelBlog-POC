@@ -3,7 +3,6 @@ import MapContainer from './MapContainer';
 import BlogContentContainer from './BlogContentContainer';
 import Header from './Header';
 import Axios from 'axios';
-import config from './config';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import About from './About';
 import MobileHeader from './MobileHeader';
