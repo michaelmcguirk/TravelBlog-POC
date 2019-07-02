@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Content from './Content';
+import Content from '../components/Content';
 import Gallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
 

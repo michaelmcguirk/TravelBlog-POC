@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MapContainer from './MapContainer';
 import BlogContentContainer from './BlogContentContainer';
-import Header from './Header';
-import Axios from 'axios';
+import Header from '../components/Header';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import About from './About';
-import MobileHeader from './MobileHeader';
-import BurgerMenu from './BurgerMenu';
+import About from '../components/About';
+import MobileHeader from '../components/MobileHeader';
+import BurgerMenu from '../components/BurgerMenu';
+import getPlaces from '../api/CockpitPlacesAPI';
+import {parsePhotos} from '../utilities/APIUtilities';
 
 class BlogContainer extends Component {
     
@@ -18,47 +19,24 @@ class BlogContainer extends Component {
         entries: []
     }
 
-    getAspectRatio = (imagePath) => {
-        let ratio = {};
-        let ratioIndex = (imagePath.lastIndexOf(".") - 1 );
-        let ratioString = imagePath.substring(ratioIndex, ratioIndex+1);
-    
-        if(ratioString === 'p'){
-          ratio = {width: 4, height: 5};
-        }else{
-          ratio = {width: 5, height: 4};
-        }
-        return ratio;
-      }
-    
-    parsePhotos = (gallery) => {
-        if(gallery.length === 0) return [];
-        const images = gallery.map(g => {
-            let ratio = this.getAspectRatio(g.path);
-            return {
-                src: `${process.env.REACT_APP_COCKPIT_DOMAIN}${g.path}`,
-                width: ratio.width,
-                height: ratio.height
-            }
-        });
-        return images;
-    }
-
-    componentDidMount = () => {
-        Axios.get(`${process.env.REACT_APP_COCKPIT_SERVER}/api/collections/get/${process.env.REACT_APP_COCKPIT_COLLECTION}?token=${process.env.REACT_APP_COCKPIT}`)
-          .then(response => {
-            const newEntries = response.data.entries.map(c => {
-              return {
-                title: c.title,
-                content: c.content,
-                location: c.location,
-                id: c._id,
-                published: c.published,
-                gallery: this.parsePhotos(c.gallery)
-              }
+    callGetPlacesAPI = () => {
+        getPlaces().then(data => {
+            const newEntries = data.map(c => {
+                return{
+                    title: c.title,
+                    content: c.content,
+                    location: c.location,
+                    id: c._id,
+                    published: c.published,
+                    gallery: parsePhotos(c.gallery)
+                }
             });
             this.setState({entries: newEntries});
         });
+    }
+
+    componentDidMount = () => {
+        this.callGetPlacesAPI();
     }
 
     setPlace = (place) => {

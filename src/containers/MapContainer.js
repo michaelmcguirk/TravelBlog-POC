@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow} from "react-google-maps";
-import mapStyles from './MapStyles';
+import mapStyles from '../MapStyles';
 import { withRouter } from 'react-router-dom';
 
 class MapContainer extends Component{
