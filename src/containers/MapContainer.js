@@ -12,7 +12,6 @@ class MapContainer extends Component{
                 return {isOpen: false}
             }), 
         }
-
     }
 
     markerOnMouseOver = selectedIndex => {
