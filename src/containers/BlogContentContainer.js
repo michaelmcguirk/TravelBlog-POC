@@ -6,7 +6,7 @@ class BlogContentContainer extends Component {
     render(){
         return(
             <div>
-                <div className="layer">
+                <div className="layer" id="content-layer">
                     <div className="content">
                         <Content place={this.props.place}/>
                         <ImageGallery place={this.props.place}/>

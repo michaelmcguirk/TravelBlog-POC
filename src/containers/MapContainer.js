@@ -33,9 +33,9 @@ class MapContainer extends Component{
     }
 
     checkPath(){
-        const contentElement = document.getElementById('content')
+        const contentElement = document.getElementById('content-layer')
         if(window.matchMedia("only screen and (max-width: 768px)").matches){
-            contentElement.scrollIntoView();
+            contentElement.scrollIntoView(true);
         }
         if(this.props.location.pathname !== '/Home'){
             this.props.history.push('/Home');

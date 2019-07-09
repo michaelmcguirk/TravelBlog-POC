@@ -8,6 +8,7 @@ import MobileHeader from '../components/MobileHeader';
 import BurgerMenu from '../components/BurgerMenu';
 import getPlaces from '../api/CockpitPlacesAPI';
 import {parsePhotos} from '../utilities/APIUtilities';
+import MapIcon from '../components/MapIcon';
 
 class BlogContainer extends Component {
     
@@ -47,6 +48,7 @@ class BlogContainer extends Component {
         return(
             <div className="blog-container">
                 <BurgerMenu/>
+                <MapIcon/>
                 <MobileHeader/> 
                 <div className="blog-section">
                     <Header/>
@@ -56,7 +58,7 @@ class BlogContainer extends Component {
                         <Route exact path="/"><Redirect to="/Home"/></Route>
                     </Switch>
                 </div>
-                <div className="map-section">
+                <div className="map-section" id="map-section">
                     <MapContainer
                         entries={this.state.entries}
                         setPlace={this.setPlace}

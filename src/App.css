@@ -119,6 +119,10 @@
     font-size: 5vw;
 
   }
+
+  .map-icon {
+    visibility: hidden;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -268,6 +272,19 @@
               border-color 0.3s ease-in;
 }
 
-
+/* Map Icon */
+.map-icon {
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  right: 25px;
+  bottom: 50px;
+  z-index: 1999; /*10000100;*/
+  background: lightgray;
+  padding: 10px;
+  border-radius: 25px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
+}
 
 

@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 
 class About extends Component {
-    componentDidUpdate = () => {
+
+    componentDidMount = () => {
         const contentElement = document.getElementById('content')
         if(window.matchMedia("only screen and (max-width: 768px)").matches){
             contentElement.scrollIntoView();
         }
-    } 
+    }
     
     render(){
         return(
-            <div className="layer">
+            <div className="layer" id="content-layer">
                 <div className="content" id="content">
                     <div className="content-header">
                         <h1>About Us</h1>
