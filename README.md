@@ -4,7 +4,7 @@ This project is a single page application built using ReactJS.
 
 The application uses the Google Maps API to plot locations that correspond to blog posts that are served from a CMS via a REST API. Selecting a location marker on the map component opens a corresponding blog post within the blog component. 
 
-The application is currently running with an instance of Cockpit headless CMS at feedingmosquitos.com.
+The application is currently running with an instance of Cockpit headless CMS at [feedingmosquitos.com](http://www.feedingmosquitos.com).
 
 ## Configuration
 This project utilises the custom environment variables functionality in Create React App - see: [Documentation](https://facebook.github.io/create-react-app/docs/adding-custom-environment-variables).
