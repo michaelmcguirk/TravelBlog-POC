@@ -7,11 +7,11 @@ class Welcome extends Component {
         return(
             <div className="welcome-page">
                 <Title/>
-                <div className="welcome-text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                     in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+                <div className="welcome-text"><p>In January 2019 we set off on a 6 month trip, exploring Latin America, 
+                    starting in Brazil and working our way around and up into Mexico. From the beautiful desolation of 
+                    Patagonia to the bustling streets of Mexico City, via the intoxicating heights of the Andes, 
+                    this has been a life changing experience.</p>
+                </div>
                 <NavLink to="/Home"><button className="welcome-button">Follow our journey...</button></NavLink>
             </div>
         );
