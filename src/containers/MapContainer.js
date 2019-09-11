@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow} from "react-google-maps";
 import mapStyles from '../MapStyles';
 import { withRouter } from 'react-router-dom';
+const mapIcon = 'http://localhost/cockpit-master/assets/pin6.png'
+
 
 class MapContainer extends Component{
     constructor(props){
@@ -62,6 +64,7 @@ class MapContainer extends Component{
                             key={entry.id}
                             name={entry.location.address}
                             position={{ lat: lat, lng: lng }}
+                            icon={mapIcon}
                             onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}
                             onMouseOver={this.markerOnMouseOver.bind(this, i)}
                             onMouseOut={this.markerOnMouseOut.bind(this,i)}>
