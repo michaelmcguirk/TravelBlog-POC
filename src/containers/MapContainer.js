@@ -1,8 +1,8 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow} from "react-google-maps";
 import mapStyles from '../MapStyles';
 import { withRouter } from 'react-router-dom';
-const mapIcon = 'http://localhost/cockpit-master/assets/pin6.png'
 
 
 class MapContainer extends Component{
@@ -64,7 +64,6 @@ class MapContainer extends Component{
                             key={entry.id}
                             name={entry.location.address}
                             position={{ lat: lat, lng: lng }}
-                            icon={mapIcon}
                             onClick={() => {this.props.setPlace.call(this, entry); this.checkPath.call(this)}}
                             onMouseOver={this.markerOnMouseOver.bind(this, i)}
                             onMouseOut={this.markerOnMouseOut.bind(this,i)}>
@@ -79,6 +78,15 @@ class MapContainer extends Component{
             </GoogleMap>
         )
     }
+}
+
+MapContainer.propTypes = {
+    entries: PropTypes.array,
+    setPlace: PropTypes.func,
+    googleMapURL: PropTypes.string,
+    loadingElement: PropTypes.element,
+    containerElement: PropTypes.element,
+    mapElement: PropTypes.array
 }
 
 export default withRouter(withScriptjs(withGoogleMap((props) => <MapContainer {...props}/>)));

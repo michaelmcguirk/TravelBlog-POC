@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Content from '../components/Content';
+import PropTypes from 'prop-types';
 import ImageGallery from '../components/ImageGallery';
 
 class BlogContentContainer extends Component {
@@ -15,6 +16,10 @@ class BlogContentContainer extends Component {
             </div> 
         );
     }
+}
+
+BlogContentContainer.propTypes = {
+    places: PropTypes.object
 }
 
 export default BlogContentContainer;
