@@ -22,6 +22,7 @@ class BlogContainer extends Component {
 
     callGetPlacesAPI = () => {
         getPlaces().then(data => {
+            console.log(data);
             const newEntries = data.map(c => {
                 return{
                     title: c.title,
