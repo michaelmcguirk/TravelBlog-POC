@@ -44,6 +44,12 @@
   text-align: left;
 }
 
+.mobile-title {
+  grid-area: title;
+  padding-top: 20px;
+  padding-right: 10px;
+}
+
 .blog-container {
   text-align: center;
   height: 100%;
@@ -52,6 +58,7 @@
   display: grid;
   grid-template-areas: 
     "mobileHeader"
+    "instruction"
     "map"
     "blog"
 }
@@ -89,9 +96,14 @@
   font-family: 'Pacifico', cursive;
   font-size: 9vw;
   text-shadow: -2px 4px rgb(62, 85, 95);
-  padding-bottom: 20px;
+  /*padding-bottom: 20px;*/
   opacity: 0.9;
   grid-area: title;
+}
+
+img {
+  max-height: 100%;
+  min-height: 100%;
 }
 
 /* Desktop Specific */
@@ -115,6 +127,10 @@
     padding-left: 70px;
   }
 
+  .map-instruction{
+    display: none;
+  }
+
   .title{
     font-size: 5vw;
 
@@ -123,11 +139,24 @@
   .map-icon {
     visibility: hidden;
   }
+  .burger-menu,
+  .burger-menu.open {
+    left: 1%;
+    top: 10%;
+  }
 }
-
+/* Mobile Specific */
 @media only screen and (max-width: 768px) {
   .desktop-title {
     visibility: hidden;
+  }
+  .header{
+    display: none;
+  }
+  .burger-menu,
+  .burger-menu.open {
+    left: 3%;
+    top: 3%;
   }
 }
 
@@ -138,8 +167,6 @@
   display: inline-block;
   cursor: pointer;
   position: fixed;
-  left: 25px;
-  top: 37px;
   z-index: 1999; /*10000100;*/
   background: lightgray;
   padding: 10px;

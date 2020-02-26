@@ -50,7 +50,10 @@ class BlogContainer extends Component {
             <div className="blog-container">
                 <BurgerMenu/>
                 <MapIcon/>
-                <MobileHeader/> 
+                <MobileHeader/>
+                <div className="map-instruction">
+                    <p>Select a marker on the map below...</p>
+                </div>
                 <div className="blog-section">
                     <Header/>
                     <Switch>
